@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# List the content of the current directory and display
+#only the part of the name after the first dash.
+
+for file in *; do
+    if [[ $file == .* ]]; then
+        continue
+    fi
+
+    name_after_dash="${file#*-}"
+
+    if [[ "$file" == *-* ]]; then
+        echo "$name_after_dash"
+    else
+        echo "No dash found in filename: $file"
+    fi
+done
+
