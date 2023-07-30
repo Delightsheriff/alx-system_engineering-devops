@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# A Bash script that displays To infinity and beyond indefinitely.
+# A bash script that prints 'To infinity and beyond' infinitely
 while true
 do
-    echo "To infinity and beyond!"
-    sleep 2
+	echo "To infinity and beyond"
+	sleep 2
 done
