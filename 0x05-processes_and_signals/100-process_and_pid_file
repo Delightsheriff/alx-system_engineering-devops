@@ -6,11 +6,13 @@
 # Displays "I hate the kill command" on SIGTERM signal.
 # Displays "Y U no love me?!" on SIGINT signal.
 # Deletes the pid file and terminates on SIGQUIT or SIGTERM signal.
-trap "echo I hate the kill command; exit" SIGTERM
-trap "echo Y U no love me?!" SIGINT
-trap "exit" SIGQUIT
 
-echo $$ > "/var/run/myscript.pid"
+PIDFILE="/var/run/myscript.pid"
+echo $$ > $PIDFILE
+
+trap 'echo I hate the kill command; rm $PIDFILE; exit' SIGTERM
+trap "echo 'Y U no love me?!'" SIGINT
+trap 'rm $PIDFILE; exit' SIGQUIT
 
 while true;
 do
